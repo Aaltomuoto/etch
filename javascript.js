@@ -33,11 +33,11 @@ function drawBoard() {
     container.appendChild(fragment);
 }
 function mouseEnter(div) {
-    div.style.backgroundColor = `rgb(${getRandomInt(255)},${getRandomInt(255)},${getRandomInt(255)})`;
+    div.style.backgroundColor = `rgb(${getRandomInt()},${getRandomInt()},${getRandomInt()})`;
 }
 
-function getRandomInt(max) {
-    return Math.floor(Math.random() * max);
+function getRandomInt(min = 1, max = 255) {
+    return Math.floor(Math.random() * (max - min + 1) + min)
   }
 
 function isNumber(str) {
