@@ -5,7 +5,9 @@ button.addEventListener('click', () => drawBoard());
 
 function drawBoard() {
     let gridSize = prompt("Set the gridsize");
-    if (isNaN(gridSize)) gridSize = 16;
+    if (gridSize === null) return;
+    gridSize = (!isNumber(gridSize)|| parseFloat(gridSize) < 1) ? 16 : parseFloat(gridSize);
+
     if (gridSize > 100) gridSize = 100;
 
     let container;
@@ -36,6 +38,11 @@ function mouseEnter(div) {
 }
 function mouseLeave(div) {
     //div.classList.remove('highlight');
+}
+
+function isNumber(str) {
+    if (typeof str != "string") return false;
+    return !isNaN(str) && !isNaN(parseFloat(str));
 }
 
 window.addEventListener("load", (event) => drawBoard());
