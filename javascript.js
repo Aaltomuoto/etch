@@ -23,22 +23,22 @@ function drawBoard() {
     container.style.height = `${gridSize*10}px`;
 
     let fragment = new DocumentFragment();
-    for (let i=0; i < gridSize*gridSize; i++) {
+    for (let i=1; i <= gridSize*gridSize; i++) {
         let div = document.createElement('div');
-        div.id = `dot${i+1}`;
+        div.id = `dot-${i}`;
         div.addEventListener('mouseenter', () => mouseEnter(div));
-        div.addEventListener('mouseleave', () => mouseLeave(div));
 
         fragment.appendChild(div);
     }
     container.appendChild(fragment);
 }
 function mouseEnter(div) {
-    div.classList.add('highlight');
+    div.style.backgroundColor = `rgb(${getRandomInt(255)},${getRandomInt(255)},${getRandomInt(255)})`;
 }
-function mouseLeave(div) {
-    //div.classList.remove('highlight');
-}
+
+function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+  }
 
 function isNumber(str) {
     if (typeof str != "string") return false;
