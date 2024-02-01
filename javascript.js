@@ -1,11 +1,19 @@
 const body = document.querySelector('body');
 const button = document.querySelector('button');
 
+button.addEventListener('click', () => drawBoard());
+
 function drawBoard() {
     let gridSize = prompt("Set the gridsize");
+    if (isNaN(gridSize)) gridSize = 16;
     if (gridSize > 100) gridSize = 100;
 
-    let container = document.createElement('div');
+    let container;
+    if (document.querySelector('#container')) {
+        container = document.querySelector('#container');
+        container.remove();
+    }
+    container = document.createElement('div');
     container.id = 'container';
     body.appendChild(container);
 
@@ -24,7 +32,6 @@ function drawBoard() {
     container.appendChild(fragment);
 }
 function mouseEnter(div) {
-    console.log(div.id);
     div.classList.add('highlight');
 }
 function mouseLeave(div) {
