@@ -25,7 +25,7 @@ function drawBoard() {
     let fragment = new DocumentFragment();
     for (let i=1; i <= gridSize*gridSize; i++) {
         let div = document.createElement('div');
-        div.id = `dot-${i}`;
+        div.dataset.number = i;
         div.addEventListener('mouseenter', () => mouseEnter(div));
 
         fragment.appendChild(div);
