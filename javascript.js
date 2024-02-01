@@ -8,3 +8,14 @@ for (let i=0; i < gridSize; i++) {
     fragment.appendChild(div);
 }
 container.appendChild(fragment);
+
+const divs = document.querySelectorAll('#container div');
+
+divs.forEach(function(div) {
+   div.addEventListener('mouseenter', () => {
+    div.classList.toggle('highlight');
+   });
+   div.addEventListener('mouseleave', () => {
+    div.classList.toggle('highlight');
+   })
+});
