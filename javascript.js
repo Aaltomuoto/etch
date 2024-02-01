@@ -36,7 +36,7 @@ function mouseEnter(div) {
     div.style.backgroundColor = `rgb(${getRandomInt()},${getRandomInt()},${getRandomInt()})`;
 }
 
-function getRandomInt(min = 1, max = 255) {
+function getRandomInt(min = 0, max = 255) {
     return Math.floor(Math.random() * (max - min + 1) + min)
   }
 
