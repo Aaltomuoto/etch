@@ -5,16 +5,16 @@ body {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    height: 100%;
+    border: 1px #333 solid;
+    margin: 10px;
 }
 #container div {
-    width: 25%;
-    height: 25vh;
-    margin: 0;
     border: none;
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 10px;
+    height: 10px;
 }
 #container div.highlight {
     background-color: #333;

@@ -1,21 +1,28 @@
-const container = document.querySelector('#container');
-const gridSize = 16;
+const gridSize = prompt("Set the gridsize");
+
+const body = document.querySelector('body')
+let container = document.createElement('div');
+container.id = 'container';
+body.appendChild(container);
+
+container.style.width = `${gridSize*10}px`;
+container.style.height = `${gridSize*10}px`;
 
 let fragment = new DocumentFragment();
-for (let i=0; i < gridSize; i++) {
+for (let i=0; i < gridSize*gridSize; i++) {
     let div = document.createElement('div');
-    div.innerHTML = i+1;
+    div.id = `dot${i+1}`;
+    div.addEventListener('mouseenter', () => mouseEnter(div));
+    div.addEventListener('mouseleave', () => mouseLeave(div));
+
     fragment.appendChild(div);
 }
 container.appendChild(fragment);
 
-const divs = document.querySelectorAll('#container div');
-
-divs.forEach(function(div) {
-   div.addEventListener('mouseenter', () => {
-    div.classList.toggle('highlight');
-   });
-   div.addEventListener('mouseleave', () => {
-    div.classList.toggle('highlight');
-   })
-});
+function mouseEnter(div) {
+    console.log(div.id);
+    div.classList.add('highlight');
+}
+function mouseLeave(div) {
+    //div.classList.remove('highlight');
+}
