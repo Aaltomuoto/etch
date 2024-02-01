@@ -1,12 +1,14 @@
 body {
-    margin: 0;
+    margin: 10px;
+}
+button {
+    margin-bottom: 10px;
 }
 #container {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
     border: 1px #333 solid;
-    margin: 10px;
 }
 #container div {
     border: none;
