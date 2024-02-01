@@ -1,4 +1,5 @@
-const gridSize = prompt("Set the gridsize");
+let gridSize = prompt("Set the gridsize");
+if (gridSize > 100) gridSize = 100;
 
 const body = document.querySelector('body')
 let container = document.createElement('div');
