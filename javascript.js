@@ -1,25 +1,28 @@
-let gridSize = prompt("Set the gridsize");
-if (gridSize > 100) gridSize = 100;
+const body = document.querySelector('body');
+const button = document.querySelector('button');
 
-const body = document.querySelector('body')
-let container = document.createElement('div');
-container.id = 'container';
-body.appendChild(container);
+function drawBoard() {
+    let gridSize = prompt("Set the gridsize");
+    if (gridSize > 100) gridSize = 100;
 
-container.style.width = `${gridSize*10}px`;
-container.style.height = `${gridSize*10}px`;
+    let container = document.createElement('div');
+    container.id = 'container';
+    body.appendChild(container);
 
-let fragment = new DocumentFragment();
-for (let i=0; i < gridSize*gridSize; i++) {
-    let div = document.createElement('div');
-    div.id = `dot${i+1}`;
-    div.addEventListener('mouseenter', () => mouseEnter(div));
-    div.addEventListener('mouseleave', () => mouseLeave(div));
+    container.style.width = `${gridSize*10}px`;
+    container.style.height = `${gridSize*10}px`;
 
-    fragment.appendChild(div);
+    let fragment = new DocumentFragment();
+    for (let i=0; i < gridSize*gridSize; i++) {
+        let div = document.createElement('div');
+        div.id = `dot${i+1}`;
+        div.addEventListener('mouseenter', () => mouseEnter(div));
+        div.addEventListener('mouseleave', () => mouseLeave(div));
+
+        fragment.appendChild(div);
+    }
+    container.appendChild(fragment);
 }
-container.appendChild(fragment);
-
 function mouseEnter(div) {
     console.log(div.id);
     div.classList.add('highlight');
@@ -27,3 +30,5 @@ function mouseEnter(div) {
 function mouseLeave(div) {
     //div.classList.remove('highlight');
 }
+
+window.addEventListener("load", (event) => drawBoard());
