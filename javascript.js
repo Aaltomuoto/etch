@@ -10,20 +10,19 @@ function drawBoard() {
     let gridSize = prompt("Set the gridsize");
     if (gridSize === null) return;
     gridSize = (!isNumber(gridSize)|| parseFloat(gridSize) < 1) ? 16 : parseFloat(gridSize);
-
-    if (gridSize > 100) gridSize = 100;
+    gridSize = (gridSize > 100) ? 100 : gridSize;
     let pixelSize = 100/gridSize;
+
     let container;
     if (document.querySelector('#container')) {
         container = document.querySelector('#container');
         container.remove();
     }
     container = document.createElement('div');
-    container.id = 'container';
-    body.appendChild(container);
-
     container.style.width = `${boardSize}px`;
     container.style.height = `${boardSize}px`;
+    container.id = 'container';
+    body.appendChild(container);
 
     pixelArray = [];
     let fragment = new DocumentFragment();
