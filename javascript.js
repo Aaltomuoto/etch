@@ -1,6 +1,7 @@
 const body = document.querySelector('body');
 const button = document.querySelector('button');
-let pixelArray;
+let pixelArray = [];
+let boardSize = 500;
 
 button.addEventListener('click', () => drawBoard());
 
@@ -11,7 +12,7 @@ function drawBoard() {
     gridSize = (!isNumber(gridSize)|| parseFloat(gridSize) < 1) ? 16 : parseFloat(gridSize);
 
     if (gridSize > 100) gridSize = 100;
-
+    let pixelSize = 100/gridSize;
     let container;
     if (document.querySelector('#container')) {
         container = document.querySelector('#container');
@@ -21,13 +22,15 @@ function drawBoard() {
     container.id = 'container';
     body.appendChild(container);
 
-    container.style.width = `${gridSize*10}px`;
-    container.style.height = `${gridSize*10}px`;
+    container.style.width = `${boardSize}px`;
+    container.style.height = `${boardSize}px`;
 
     pixelArray = [];
     let fragment = new DocumentFragment();
     for (let i=0; i < gridSize*gridSize; i++) {
         let div = document.createElement('div');
+        div.style.width = `${pixelSize}%`;
+        div.style.height = `${pixelSize}%`;
         pixelArray.push(0);
         div.dataset.number = i;
         div.addEventListener('mouseenter', () => mouseEnter(div));
